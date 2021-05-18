@@ -10,6 +10,7 @@ import {
 } from "typeorm";
 import { AreaEntity } from "./Area.entity";
 import { ProjectImageEntity } from "./ProjectImage.entity";
+import { ProjectImpactEventEntity } from "./ProjectImpactEvent.entity";
 
 @Entity("project")
 export class ProjectEntity {
@@ -37,6 +38,10 @@ export class ProjectEntity {
   @ManyToMany(() => AreaEntity, { cascade: true })
   @JoinTable()
   areas: AreaEntity[];
+
+  @ManyToMany(() => ProjectImpactEventEntity)
+  @JoinTable()
+  impacts: ProjectImpactEventEntity[];
 
   @CreateDateColumn()
   createdAt: Date;
