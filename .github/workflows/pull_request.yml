@@ -147,8 +147,17 @@ jobs:
         with:
           name: build
 
+      - name: Run tests SPEC with coverage
+        run: yarn jest:spec --coverage --json --outputFile=/home/runner/work/_actions/ascariandrea/jest-github-action/v1/dist/jest.results.json
+
       - name: Run tests SPEC
-        run: yarn test:spec
+        uses: mattallty/jest-github-action@v1.0.3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          test-command: 'echo done'
+          # coverage-comment: false
+          changes-only: true
 
   tests-e2e:
     runs-on: ubuntu-latest
@@ -179,6 +188,9 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: build
+
+      - name: Run tests with coverage
+        run: yarn jest:e2e --coverage --json --outputFile=/home/runner/work/_actions/ascariandrea/jest-github-action/v1/dist/jest.results.json
 
       - name: Run tests E2E
         run: yarn test:e2e --ci --forceExit
