@@ -67,10 +67,5 @@
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
-  "lint-staged": {
-    "**/*.(ts|tsx|js|jsx)": "eslint --fix",
-    "**/*.+(ts|tsx|js|jsx|json|css)": [
-      "prettier --write"
-    ]
-  }
+  "lint-staged": ["yarn workspaces run lint-staged"]
 }
