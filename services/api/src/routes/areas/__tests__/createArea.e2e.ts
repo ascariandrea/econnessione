@@ -5,8 +5,9 @@ import { pipe } from "fp-ts/lib/pipeable";
 import * as TE from "fp-ts/lib/TaskEither";
 import { RouteContext } from "@routes/route.types";
 import jwt from "jsonwebtoken";
+import { ImageArb } from "@econnessione/core/tests/arbitraries/Image.arbitraries";
 
-describe("Create Actor", () => {
+describe("Create Area", () => {
   let ctx: RouteContext,
     req: supertest.SuperTest<supertest.Test>,
     authorizationToken: string;
@@ -34,7 +35,7 @@ describe("Create Actor", () => {
   test("Should return a 401", async () => {
     const response = await req.post("/v1/actors").send({
       username: tests.fc.sample(tests.fc.string({ minLength: 6 }), 1)[0],
-      avatar: "http://myavatar-url.com/",
+      avatar: tests.fc.sample(ImageArb, 1)[0],
       color: "ffffff",
       fullName: `${tests.fc.sample(
         tests.fc.string({ minLength: 3 })
