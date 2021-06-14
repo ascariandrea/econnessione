@@ -82,22 +82,27 @@ const Map: React.FC<MapProps> = ({
       ],
     });
 
+    if (center) {
+      map.getView().setCenter(center);
+    }
+
+    if (zoom) {
+      map.getView().setZoom(zoom);
+    }
+
     // center map based on features source layer
     const size = map.getSize();
     const totalPadding = 20 * 2;
 
     if (size) {
-      map.getView().fit(featureSource.getExtent(), {
-        size: [size[0] - totalPadding, size[1] - totalPadding],
-        maxZoom: 12,
-      });
-    }
-
-    if (center) {
-      map.getView().setCenter(center);
-    }
-    if (zoom) {
-      map.getView().setZoom(zoom);
+      if (features.length > 0) {
+        map.getView().fit(featureSource.getExtent(), {
+          size: [size[0] - totalPadding, size[1] - totalPadding],
+          maxZoom: 12,
+        });
+      } else {
+        map.getView().setViewportSize(size);
+      }
     }
 
     map.on("click", (evt) => {
