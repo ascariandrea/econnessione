@@ -42,3 +42,14 @@
 - https://www.journalismfund.eu/how-eu-money-spent-covid19-drugs
 - https://drawdown.org/
 - https://it.ejatlas.org/commodity/asphalt
+
+
+### Covid
+
+- https://www.youtube.com/watch?v=ZSPVAxjy1Cw
+- https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8117969/
+- https://corona-ausschuss.de/en/
+- https://davidicke.com/2021/06/12/lawyer-reiner-fuellmich-talks-to-ickonics-right-now-about-the-covid-plandemic-his-team-are-exposing-and-prosecuting-over-blatant-breaches-of-the-nuremberg-code/
+- https://europa.is/video/world-freedom-alliance/
+- https://www.biznews.com/global-investing/2021/06/03/fauci-emails-jerm-glenda-gray
+- https://jermwarfare.com/blog/john-mcafee-is-the-real-antivirus
