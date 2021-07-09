@@ -48,8 +48,8 @@ export const parseSearch = <R extends keyof Routes>(
   const search =
     l !== undefined
       ? stripInvalid(
-          querystring.parse(l.search.replace("?", ""), queryStringOpts)
-        )
+        querystring.parse(l.search.replace("?", ""), queryStringOpts)
+      )
       : {};
 
   switch (route) {
@@ -71,15 +71,15 @@ export const parseSearch = <R extends keyof Routes>(
 };
 
 export const updateSearch =
-  <R extends keyof Routes>(l: WindowLocation | undefined, route: R) =>
-  (update: Partial<Routes[R]>): E.Either<t.Errors, string> => {
-    return pipe(
-      parseSearch(l, route),
-      E.map((search) => Object.assign(search, update)),
-      E.map(stripInvalid),
-      E.map(
-        (search) =>
-          `/${route}?${querystring.stringify(search, queryStringOpts)}`
-      )
-    );
-  };
+  <R extends keyof Routes>(route: R) =>
+    (l: WindowLocation | undefined, update: Partial<Routes[R]>): E.Either<t.Errors, string> => {
+      return pipe(
+        parseSearch(l, route),
+        E.map((search) => Object.assign(search, update)),
+        E.map(stripInvalid),
+        E.map(
+          (search) =>
+            `/${route}?${querystring.stringify(search, queryStringOpts)}`
+        )
+      );
+    };
